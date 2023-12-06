@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body {
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+
+        .img-render {
+            height: 300px;
+            width: 300px;
+            border-radius: 10px;
+        }
+
+        p,
+        h3,
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        li.fav {
+            background: #8e496e;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- attribute bidding -->
+        <a :href="url" target="_blank">my facebook</a>
+        
+
+        <div v-if="showBook">
+            <ul>
+                <li v-for="book in books" :class="{ fav: book.isFav}" @click="toggleFav2(book)">
+                    <img :src="book.img" :alt="book.title" class="img-render">
+                    <h3> {{ book.title }} </h3>
+                    <p> {{ book.author }} </p>
+                </li>
+            </ul>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+        <h1>favourite books</h1>
+
+        <div v-if="showBook">
+            <ul>
+                <li v-for="book in filteredBooks" :class="{ fav: book.isFav}" @click="toggleFav2(book)">
+                    <img :src="book.img" :alt="book.title" class="img-render">
+                    <h3> {{ book.title }} </h3>
+                    <p> {{ book.author }} </p>
+                </li>
+            </ul>
+        </div>
+
+
+        <button @click="toggleShowBooks">
+            <span v-if="showBook">Hide Book</span>
+            <span v-else>Show Book</span>
+        </button>
+
+        <div v-show="showBook">Currently showing books</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
