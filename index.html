@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- attribute bidding -->
+        <a href=""></a>
+
+
+        <div v-if="showBook">
+            <ul>
+                <li v-for="book in books">
+                    <h3> {{ book.title }} </h3>
+                    <p> {{ book.author }} </p>
+                </li>
+            </ul>
+        </div>
+
+        <button @click="toggleShowBooks">
+            <span v-if="showBook">Hide Book</span>
+            <span v-else>Show Book</span>
+        </button>
+
+        <div v-show="showBook">Currently showing books</div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
